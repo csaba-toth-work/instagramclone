@@ -1,12 +1,12 @@
 package com.technicalinterview.instagramclone.Service;
 
-import com.technicalinterview.instagramclone.Entity.Status;
-import com.technicalinterview.instagramclone.Repository.StatusRepo;
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import com.technicalinterview.instagramclone.Entity.Status;
+import com.technicalinterview.instagramclone.Repository.StatusRepo;
 
 @Service
 public class StatusService {
@@ -21,12 +21,12 @@ public class StatusService {
         return statusRepo.save(status);
     }
 
-    public ArrayList<Status> retrieveStatus() {
+    public ArrayList<Status> retrieveStatus(){
 
-        ArrayList<Status> statusList = statusRepo.findAll();
+        ArrayList<Status> statusList=statusRepo.findAll();
 
-        for (int i = 0; i < statusList.size(); i++) {
-            Status statusItem = statusList.get(i);
+        for(int i=0;i<statusList.size();i++) {
+            Status statusItem=statusList.get(i);
             statusItem.setUserName(userService.displayUserMetaData(statusItem.getUserId()).getUserName());
         }
 

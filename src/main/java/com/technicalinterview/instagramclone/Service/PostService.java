@@ -1,12 +1,14 @@
 package com.technicalinterview.instagramclone.Service;
 
-import com.technicalinterview.instagramclone.Entity.Post;
-import com.technicalinterview.instagramclone.Entity.Status;
-import com.technicalinterview.instagramclone.Repository.PostRepo;
+import java.util.ArrayList;
+import java.util.Collections;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import com.technicalinterview.instagramclone.Entity.Post;
+import com.technicalinterview.instagramclone.Entity.Status;
+import com.technicalinterview.instagramclone.Repository.PostRepo;
 
 @Service
 public class PostService {
@@ -21,14 +23,16 @@ public class PostService {
         return postRepo.save(post);
     }
 
-    public ArrayList<Post> retrievePostFromDB() {
+    public ArrayList<Post> retrivePostFromDB(){
 
-        ArrayList<Post> postList = postRepo.findAll();
+        ArrayList<Post> postList=postRepo.findAll();
 
-        for (int i = 0; i < postList.size(); i++) {
-            Post postItem = postList.get(i);
+        for(int i=0;i<postList.size();i++) {
+            Post postItem=postList.get(i);
             postItem.setUserName(userService.displayUserMetaData(postItem.getUserId()).getUserName());
         }
+        Collections.sort(postList,(a,b)->b.getId()-a.getId());
         return postList;
     }
+
 }

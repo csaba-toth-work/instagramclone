@@ -1,14 +1,16 @@
 package com.technicalinterview.instagramclone.Repository;
 
-import com.technicalinterview.instagramclone.Entity.Comments;
+import java.util.ArrayList;
+
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
+import com.technicalinterview.instagramclone.Entity.Comments;
 
 @Repository
-public interface CommentRepo  extends CrudRepository<Comments,Integer> {
+public interface CommentRepo extends CrudRepository<Comments, Integer> {
 
-    Comments save(Comments comments);
-    ArrayList<Comments> findAllByPostId(String postID);
+    Comments save(Comments comment);
+    ArrayList<Comments> findAllByPostId(String postId);
+    ArrayList<Comments> findAll();
 }

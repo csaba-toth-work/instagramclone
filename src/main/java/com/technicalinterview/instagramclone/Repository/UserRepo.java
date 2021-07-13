@@ -1,13 +1,13 @@
 package com.technicalinterview.instagramclone.Repository;
 
-import com.technicalinterview.instagramclone.Entity.Users;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import com.technicalinterview.instagramclone.Entity.Users;
+
 @Repository
-public interface UserRepo extends CrudRepository<Users, Integer> {
+public interface UserRepo extends CrudRepository<Users, Integer>{
 
-    Users save(Users users);
+    Users save(Users user);
     Users findByUserId(String userId);
-
 }
